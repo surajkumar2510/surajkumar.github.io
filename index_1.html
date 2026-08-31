@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Suraj Kumar — Robotics, Autonomy &amp; Vehicle Dynamics</title>
+<meta name="description" content="Suraj Kumar — MS Research Scholar in Robotics and Automation, Department of Engineering Design, IIT Madras. Underwater vehicle dynamics, CFD, autonomous driving perception and applied machine learning.">
+<meta name="author" content="Suraj Kumar">
+
+<meta property="og:title" content="Suraj Kumar — Robotics, Autonomy &amp; Vehicle Dynamics">
+<meta property="og:description" content="MS Research Scholar, IIT Madras. Underwater glider dynamics and control, ADAS perception, applied machine learning.">
+<meta property="og:type" content="profile">
+<meta property="og:image" content="assets/images/profile.jpg">
+
+<style>
+/* ============================================================
+   PALETTE — light academic
+   ============================================================ */
+:root{
+  --paper:#fbfaf7;
+  --card:#ffffff;
+  --ink:#1b1d1f;
+  --ink-2:#41474d;
+  --ink-3:#6b737b;
+  --rule:#e0dcd4;
+  --rule-2:#efece6;
+  --accent:#14425c;
+  --accent-soft:#e8eff3;
+  --accent-2:#8a5a2b;
+  --gold:#8a6a1f;
+  --gold-soft:#fdf6e4;
+  --gold-line:#e3cd94;
+  --flag:#fff4e0;
+  --flag-line:#e0b878;
+  --max:1080px;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,"Times New Roman",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,"Helvetica Neue",Arial,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--sans);font-size:16px;line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(20,66,92,.28)}
+a:hover{border-bottom-color:var(--accent)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+header.site{background:var(--card);border-bottom:1px solid var(--rule)}
+.masthead{display:flex;gap:32px;align-items:flex-start;padding:44px 0 30px;flex-wrap:wrap}
+
+.portrait{
+  width:138px;height:138px;flex:0 0 138px;border-radius:3px;
+  object-fit:cover;border:1px solid var(--rule);background:var(--accent-soft);
+}
+.mast-text{flex:1 1 380px;min-width:280px}
+h1.name{
+  font-family:var(--serif);font-weight:600;
+  font-size:clamp(31px,4.6vw,43px);line-height:1.12;
+  margin:0 0 7px;letter-spacing:-.012em;
+}
+.role{font-size:16.5px;color:var(--ink-2);margin:0 0 4px}
+.affil{font-size:15px;color:var(--ink-3);margin:0 0 14px}
+
+.award{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--gold-soft);border:1px solid var(--gold-line);
+  color:var(--gold);font-size:13.5px;padding:5px 13px;border-radius:100px;
+  margin:0 0 16px;
+}
+.award svg{width:14px;height:14px;fill:currentColor}
+
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{
+  display:inline-flex;align-items:center;gap:7px;
+  font-size:13.5px;padding:5px 12px;border:1px solid var(--rule);
+  border-radius:100px;color:var(--ink-2);background:var(--paper);text-decoration:none;
+}
+.chip:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+.chip svg{width:14px;height:14px;flex:0 0 14px;fill:currentColor;opacity:.75}
+
+/* ============================================================
+   TABS
+   ============================================================ */
+nav.tabs{background:var(--card);border-bottom:1px solid var(--rule);position:sticky;top:0;z-index:40}
+.tabs-inner{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;max-width:var(--max);margin:0 auto;padding:0 24px}
+.tabs-inner::-webkit-scrollbar{display:none}
+.tab{
+  appearance:none;background:none;border:0;cursor:pointer;
+  font-family:var(--sans);font-size:14.5px;color:var(--ink-3);
+  padding:15px 15px 13px;white-space:nowrap;border-bottom:2.5px solid transparent;
+}
+.tab:hover{color:var(--ink)}
+.tab[aria-selected="true"]{color:var(--accent);border-bottom-color:var(--accent);font-weight:600}
+
+/* ============================================================
+   PANELS
+   ============================================================ */
+main{padding:46px 0 90px}
+.panel{display:none;animation:fade .28s ease}
+.panel.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+h2.sec{font-family:var(--serif);font-size:27px;font-weight:600;margin:0 0 6px;letter-spacing:-.01em}
+.sec-note{color:var(--ink-3);font-size:15px;margin:0 0 30px}
+h3.sub{font-family:var(--serif);font-size:19px;font-weight:600;margin:38px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--rule)}
+h3.sub:first-of-type{margin-top:26px}
+p{margin:0 0 15px}
+.lead{font-size:17.5px;line-height:1.7;color:var(--ink-2)}
+
+.card{background:var(--card);border:1px solid var(--rule);border-radius:4px;padding:24px 26px;margin-bottom:16px}
+.card-head{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;align-items:baseline}
+.card-title{font-family:var(--serif);font-size:19px;font-weight:600;margin:0}
+.card-org{color:var(--accent);font-size:15px;margin:2px 0 0;font-weight:500}
+.card-meta{font-family:var(--mono);font-size:12.5px;color:var(--ink-3);white-space:nowrap;text-align:right}
+.card ul{margin:14px 0 0;padding-left:20px}
+.card li{margin-bottom:8px;color:var(--ink-2);font-size:15.3px}
+.card li::marker{color:var(--accent-2)}
+.card li:last-child{margin-bottom:0}
+.card p.body{margin-top:14px;color:var(--ink-2);font-size:15.3px}
+
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.tag{font-family:var(--mono);font-size:11.5px;letter-spacing:.02em;padding:3px 9px;border-radius:3px;background:var(--accent-soft);color:var(--accent)}
+.tag.gold{background:var(--gold-soft);color:var(--gold)}
+
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:16px}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:4px;overflow:hidden;margin:26px 0 6px}
+.stat{background:var(--card);padding:18px 20px}
+.stat .n{font-family:var(--serif);font-size:25px;color:var(--accent);line-height:1.15}
+.stat .l{font-size:13px;color:var(--ink-3);margin-top:4px}
+
+.skillrow{display:grid;grid-template-columns:190px 1fr;gap:18px;padding:15px 0;border-bottom:1px solid var(--rule-2);align-items:start}
+.skillrow:last-child{border-bottom:0}
+.skillrow .k{font-weight:600;font-size:14.5px;color:var(--ink);padding-top:2px}
+.skillrow .v{display:flex;flex-wrap:wrap;gap:6px}
+
+.tl{border-left:2px solid var(--rule);padding-left:26px;margin-left:6px}
+.tl-item{position:relative;padding-bottom:32px}
+.tl-item:last-child{padding-bottom:0}
+.tl-item::before{content:"";position:absolute;left:-33px;top:7px;width:10px;height:10px;border-radius:50%;background:var(--accent);border:2px solid var(--paper)}
+
+.flag{background:var(--flag);border:1px solid var(--flag-line);border-left-width:4px;border-radius:3px;padding:14px 18px;margin:0 0 22px;font-size:14.5px;color:#6a4a12}
+.flag strong{color:#4a3208}
+.todo{background:var(--flag);border-bottom:1px dashed var(--flag-line);padding:0 3px;border-radius:2px}
+
+/* ============================================================
+   GALLERY
+   ============================================================ */
+.gal-filters{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 24px}
+.gf{appearance:none;border:1px solid var(--rule);background:var(--card);font-family:var(--sans);font-size:13.5px;color:var(--ink-2);padding:6px 14px;border-radius:100px;cursor:pointer}
+.gf:hover{border-color:var(--accent);color:var(--accent)}
+.gf.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.gitem{background:var(--card);border:1px solid var(--rule);border-radius:4px;overflow:hidden;cursor:pointer}
+.gitem:hover{border-color:var(--accent)}
+.gthumb{position:relative;aspect-ratio:16/10;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.gthumb img,.gthumb video{width:100%;height:100%;object-fit:cover}
+.gbadge{position:absolute;top:8px;left:8px;font-family:var(--mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;background:rgba(20,66,92,.9);color:#fff;padding:3px 8px;border-radius:3px}
+.gempty{font-family:var(--serif);font-size:15px;color:var(--accent);opacity:.55;padding:16px;text-align:center}
+.gcap{padding:13px 15px}
+.gcap .t{font-size:14.5px;font-weight:600;margin:0 0 3px}
+.gcap .d{font-size:13px;color:var(--ink-3);margin:0}
+
+.lb{position:fixed;inset:0;background:rgba(16,18,20,.94);z-index:100;display:none;align-items:center;justify-content:center;padding:36px 24px}
+.lb.on{display:flex}
+.lb-body{max-width:1100px;width:100%;text-align:center}
+.lb-body img,.lb-body video{max-height:76vh;width:auto;max-width:100%;margin:0 auto;border-radius:4px}
+.lb-cap{color:#e8e5df;font-size:15px;margin-top:18px}
+.lb-cap .t{font-family:var(--serif);font-size:19px;margin-bottom:5px}
+.lb-x{position:absolute;top:18px;right:22px;background:none;border:0;color:#fff;font-size:34px;line-height:1;cursor:pointer;opacity:.7}
+.lb-x:hover{opacity:1}
+
+/* ============================================================
+   CONTACT
+   ============================================================ */
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:26px}
+.cbox{background:var(--card);border:1px solid var(--rule);border-radius:4px;padding:22px 24px}
+.cbox .k{font-family:var(--mono);font-size:11.5px;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-3);margin-bottom:7px}
+.cbox .v{font-size:16px;word-break:break-word}
+.cbox .v a{border-bottom:0}
+
+footer.site{border-top:1px solid var(--rule);background:var(--card);padding:26px 0;font-size:13.5px;color:var(--ink-3)}
+.foot-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+@media (max-width:640px){
+  .masthead{padding:32px 0 24px;gap:20px}
+  .portrait{width:96px;height:96px;flex-basis:96px}
+  .skillrow{grid-template-columns:1fr;gap:8px}
+  .card{padding:20px}
+  .card-meta{text-align:left}
+}
+@media print{
+  nav.tabs,.gal-filters,.flag{display:none}
+  .panel{display:block!important;page-break-before:always}
+  body{background:#fff;font-size:11pt}
+  .card{border-color:#ccc;page-break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================ HEADER -->
+<header class="site">
+  <div class="wrap masthead">
+    <img class="portrait" src="assets/images/profile.jpg" alt="Suraj Kumar">
+
+    <div class="mast-text">
+      <h1 class="name">Suraj Kumar</h1>
+      <p class="role">Robotics &amp; Automation · Underwater Vehicle Dynamics · Autonomous Driving Perception</p>
+      <p class="affil">MS Research Scholar, Department of Engineering Design, Indian Institute of Technology Madras</p>
+
+      <div class="award">
+        <svg viewBox="0 0 24 24"><path d="M12 2l2.6 5.6 6.1.8-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 8.4l6.1-.8z"/></svg>
+        Best Paper Award — IEEE SPACE 2026
+      </div>
+
+      <div class="chips">
+        <a class="chip" href="mailto:surajkumarmech2022@gmail.com">
+          <svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          Email
+        </a>
+        <a class="chip" href="https://www.linkedin.com/in/suraj-kumar-42050a198/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.07 1.4-2.07 2.85V21H9z"/></svg>
+          LinkedIn
+        </a>
+        <a class="chip" href="https://github.com/surajkumar-iitm" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M12 .5a12 12 0 00-3.8 23.4c.6.1.8-.26.8-.58v-2c-3.3.72-4-1.6-4-1.6-.55-1.4-1.34-1.77-1.34-1.77-1.1-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.84 2.8 1.3 3.5 1 .1-.78.42-1.3.76-1.6-2.66-.3-5.46-1.33-5.46-5.93 0-1.3.47-2.38 1.24-3.22-.13-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 016 0c2.3-1.55 3.3-1.23 3.3-1.23.64 1.66.24 2.88.12 3.18a4.6 4.6 0 011.23 3.22c0 4.61-2.8 5.62-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.82.58A12 12 0 0012 .5z"/></svg>
+          GitHub
+        </a>
+        <a class="chip" href="https://orcid.org/0009-0006-1127-6573" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M12 0a12 12 0 100 24 12 12 0 000-24zM7.4 17.6H5.8V7.9h1.6zM6.6 6.6a1 1 0 110-2 1 1 0 010 2zm3.3 11V7.9h3.7c3.1 0 4.6 2.2 4.6 4.9 0 2.9-1.9 4.8-4.7 4.8zm1.6-1.5h1.9c2.2 0 3.1-1.5 3.1-3.3 0-1.9-1-3.3-3.1-3.3h-1.9z"/></svg>
+          ORCID
+        </a>
+        <a class="chip" href="assets/docs/CV.pdf" download>
+          <svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3zM5 18h14v2H5z"/></svg>
+          Download CV
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============================================================ TAB BAR -->
+<nav class="tabs" aria-label="Sections">
+  <div class="tabs-inner" role="tablist">
+    <button class="tab" role="tab" aria-selected="true"  data-tab="about">About</button>
+    <button class="tab" role="tab" aria-selected="false" data-tab="experience">Experience</button>
+    <button class="tab" role="tab" aria-selected="false" data-tab="research">Research</button>
+    <button class="tab" role="tab" aria-selected="false" data-tab="projects">Projects</button>
+    <button class="tab" role="tab" aria-selected="false" data-tab="publications">Publications</button>
+    <button class="tab" role="tab" aria-selected="false" data-tab="gallery">Gallery</button>
+    <button class="tab" role="tab" aria-selected="false" data-tab="skills">Skills</button>
+    <button class="tab" role="tab" aria-selected="false" data-tab="education">Education</button>
+    <button class="tab" role="tab" aria-selected="false" data-tab="contact">Contact</button>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<!-- ============================================================ ABOUT -->
+<section class="panel active" id="about" role="tabpanel">
+  <h2 class="sec">About</h2>
+  <p class="sec-note">Robotics researcher working across marine vehicle dynamics, autonomous driving perception, and applied machine learning.</p>
+
+  <p class="lead">
+    I am an MS research scholar in Robotics and Automation at the Department of Engineering Design,
+    IIT Madras, working in the Autonomous Systems Lab under Dr.&nbsp;Asokan Thondiyath. My thesis studies
+    the dynamics and control of a 123&nbsp;kg buoyancy-driven winged underwater glider — building the
+    vehicle's complete mathematical model from CFD-extracted hydrodynamic coefficients, through a
+    six-degree-of-freedom Fossen simulator, to the control design that flies it in sawtooth glides and
+    controlled spirals.
+  </p>
+  <p class="lead">
+    In parallel I work on perception for autonomous driving: multimodal sensor fusion across camera,
+    LiDAR, IMU and GPS; detect–classify–track pipelines; trajectory prediction for on-road traffic; and
+    production ADAS features delivered to a leading Japanese automotive client.
+  </p>
+  <p class="lead">
+    Before returning to research I spent three and a half years building real systems — autonomous
+    underwater vehicles and an underwater docking station at CSIR-CMERI Durgapur, UAV landing-gear
+    hydraulics under a DRDO programme at IIT Madras, and wire-arc additive manufacturing research at
+    CSIR-NML Jamshedpur. That mix is what I bring to a problem: a mechanical engineer's instinct for the
+    physical system, plus the simulation, control and learning tooling to reason about it rigorously.
+  </p>
+
+  <div class="stats">
+    <div class="stat"><div class="n">Best Paper</div><div class="l">IEEE SPACE 2026 Conference</div></div>
+    <div class="stat"><div class="n">3 yr 7 mo</div><div class="l">Professional research &amp; engineering</div></div>
+    <div class="stat"><div class="n">8.19</div><div class="l">MS CGPA, IIT Madras</div></div>
+    <div class="stat"><div class="n">6-DOF</div><div class="l">Glider dynamics model built from scratch</div></div>
+  </div>
+
+  <h3 class="sub">Research interests</h3>
+  <div class="card">
+    <ul style="margin-top:0">
+      <li><strong>Marine robotics</strong> — underwater vehicle hydrodynamics, added-mass and damping identification, under-actuated glider control.</li>
+      <li><strong>Autonomous driving perception</strong> — multimodal sensor fusion, LiDAR-based classification, trajectory prediction and free-space estimation.</li>
+      <li><strong>Learning for control</strong> — reinforcement learning applied to vehicle guidance, and physics-informed machine learning generally.</li>
+      <li><strong>Simulation and virtual testing</strong> — CFD-based captive-model testing as a substitute for physical tow-tank experiments.</li>
+    </ul>
+  </div>
+
+  <h3 class="sub">Currently</h3>
+  <p>
+    Completing my MS thesis at IIT Madras (expected 2027) and open to
+    <span class="todo">[research collaborations / internships / full-time roles / PhD positions — tell me which and I'll write this line properly]</span>.
+  </p>
+</section>
+
+<!-- ============================================================ EXPERIENCE -->
+<section class="panel" id="experience" role="tabpanel">
+  <h2 class="sec">Experience</h2>
+  <p class="sec-note">Three years and seven months across IIT Madras, CSIR laboratories and industry.</p>
+
+  <div class="card">
+    <div class="card-head">
+      <div>
+        <h3 class="card-title">Project Associate — ADAS Perception</h3>
+        <p class="card-org">IIT Madras Centre for Industrial Consultancy and Sponsored Research (ICSR)</p>
+      </div>
+      <div class="card-meta">Jan 2025 — Present<br>Chennai, India</div>
+    </div>
+    <p class="body">
+      <em>Vehicle on/off-road classification and free-space mapping for an ADAS perception pipeline.</em>
+    </p>
+    <ul>
+      <li>Developed a rule-based algorithm that labels whether a traffic vehicle lies within or outside the road boundary, running in under 100&nbsp;ms at over 97% accuracy.</li>
+      <li>Used efficient road-lane mappings and static road features to raise classification accuracy.</li>
+      <li>Built free-space boundary mapping around the ego vehicle from its surrounding traffic participants.</li>
+      <li>Awarded two high customer satisfaction certificates by a leading Japanese automotive client.</li>
+    </ul>
+    <div class="tags"><span class="tag">ADAS</span><span class="tag">C++</span><span class="tag">Perception</span><span class="tag">Free-space mapping</span><span class="tag">Real-time systems</span></div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div>
+        <h3 class="card-title">Project Associate — Aircraft Hydraulic Systems (DRDO)</h3>
+        <p class="card-org">IIT Madras (ICSR) — DRDO-sponsored project</p>
+      </div>
+      <div class="card-meta">Jul 2024 — Jan 2025<br>Chennai, India</div>
+    </div>
+    <p class="body">
+      <em>Modelling and performance analysis of a closed-loop hydraulic system for high-speed take-off and landing of aircraft.</em>
+    </p>
+    <ul>
+      <li>Conducted performance analysis of a complete closed-loop hydraulic system for an unmanned aerial vehicle.</li>
+      <li>Modelled and simulated the hydraulic actuation circuit governing landing-gear retraction and extension under high-speed take-off, landing and cruise conditions.</li>
+      <li>Simulated the system against real flight-condition data and validated its performance to establish operational reliability.</li>
+      <li>Designed and tuned a PID control strategy for hydraulic valve actuation to achieve stable, responsive behaviour.</li>
+      <li>This work won the <strong>Best Paper Award at the IEEE SPACE 2026 Conference</strong>, Bengaluru.</li>
+    </ul>
+    <div class="tags"><span class="tag">Simcenter Amesim</span><span class="tag">Hydraulics</span><span class="tag">PID control</span><span class="tag">Reliability analysis</span><span class="tag gold">Best Paper</span></div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div>
+        <h3 class="card-title">Project Associate — Autonomous Underwater Vehicles</h3>
+        <p class="card-org">CSIR — Central Mechanical Engineering Research Institute (CMERI), Durgapur · NIOT project</p>
+      </div>
+      <div class="card-meta">Jun 2023 — Jul 2024<br>Durgapur, India</div>
+    </div>
+    <p class="body">
+      <em>Design and development of an autonomous underwater vehicle and its underwater docking station.</em>
+    </p>
+    <ul>
+      <li>Designed the AUV hull and optimised its geometry for minimum hydrodynamic drag using computational fluid dynamics.</li>
+      <li>Developed an underwater docking station with a funnel-type homing structure and latching mechanism for autonomous capture and underwater charging.</li>
+      <li>Integrated USBL, DVL and INS units through sensor fusion to enable reliable underwater navigation and communication.</li>
+      <li>Developed and tested a remotely operated vehicle at the institute's shallow-basin facility, including a magnetic wheel system for ship-hull cleaning and a non-destructive testing sensor mechanism for hull inspection.</li>
+    </ul>
+    <div class="tags"><span class="tag">ANSYS Fluent</span><span class="tag">AUV / ROV</span><span class="tag">USBL · DVL · INS</span><span class="tag">Sensor fusion</span><span class="tag">Docking systems</span></div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div>
+        <h3 class="card-title">Graduate Apprentice Trainee — Additive Manufacturing</h3>
+        <p class="card-org">CSIR — National Metallurgical Laboratory (NML), Jamshedpur</p>
+      </div>
+      <div class="card-meta">Jan 2023 — Jun 2023<br>Jamshedpur, India</div>
+    </div>
+    <p class="body">
+      <em>Process optimisation and post-process characterisation of Wire Arc Additive Manufacturing (WAAM) for metallic components.</em>
+    </p>
+    <ul>
+      <li>Carried out research and development on WAAM processes for the fabrication of metallic components.</li>
+      <li>Designed and executed experiments to optimise WAAM process parameters across multiple metal alloys.</li>
+      <li>Performed post-process characterisation including residual stress measurement by the contour method and dimensional accuracy assessment on a coordinate measuring machine.</li>
+      <li>Collaborated with academic and industrial partners to apply WAAM to real-world engineering applications.</li>
+    </ul>
+    <div class="tags"><span class="tag">WAAM</span><span class="tag">Material characterisation</span><span class="tag">Residual stress</span><span class="tag">CMM</span></div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div>
+        <h3 class="card-title">Intern</h3>
+        <p class="card-org">Bharat Coking Coal Limited (BCCL), Coal India</p>
+      </div>
+      <div class="card-meta">Mar 2021 — Apr 2021<br>Dhanbad, India</div>
+    </div>
+    <ul>
+      <li>Worked on the assembly of gearboxes and internal combustion engine units to standard operating procedures, gaining hands-on experience in mechanical assembly and shop-floor practice.</li>
+      <li>Performed component testing and supported quality assurance activities to verify reliability before integration into larger vehicle systems.</li>
+    </ul>
+    <div class="tags"><span class="tag">Mechanical assembly</span><span class="tag">Quality assurance</span><span class="tag">Shop-floor practice</span></div>
+  </div>
+
+  <h3 class="sub">Teaching</h3>
+  <div class="card">
+    <ul style="margin-top:0">
+      <li><strong>Teaching Assistant</strong> — Analog and Digital Electronics Laboratory, IIT Madras (July–November 2025).</li>
+      <li><strong>Teaching Assistant</strong> — Functional and Conceptual Design (ED1011), Department of Engineering Design, IIT Madras.</li>
+      <li><strong>Teaching Assistant</strong> — NPTEL online course, <span class="todo">[course name and term]</span>.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================================================ RESEARCH -->
+<section class="panel" id="research" role="tabpanel">
+  <h2 class="sec">Research</h2>
+  <p class="sec-note">Autonomous Systems Lab, Department of Engineering Design, IIT Madras. Advisor: Dr.&nbsp;Asokan Thondiyath.</p>
+
+  <h3 class="sub">MS thesis — underwater glider dynamics and control</h3>
+
+  <div class="card">
+    <div class="card-head">
+      <div>
+        <h3 class="card-title">Dynamics and Control of a Buoyancy-Driven Winged Underwater Glider</h3>
+        <p class="card-org">MS Thesis · Underwater Robotics</p>
+      </div>
+      <div class="card-meta">2025 — Present</div>
+    </div>
+    <p class="body">
+      Underwater gliders convert small, slow changes in buoyancy into forward motion by trading vertical
+      velocity for horizontal glide across a fixed wing. They carry no propeller and consume almost no power
+      between buoyancy cycles, which makes them the natural platform for month-scale ocean survey. The
+      engineering difficulty is that the vehicle is under-actuated: a single bellows and a rudder must
+      produce the full six-degree-of-freedom trajectory. My thesis builds the complete mathematical model
+      of a 123&nbsp;kg winged glider — 2.4&nbsp;m hull, 0.6&nbsp;m maximum diameter — and the control design
+      that flies it. Because no experimental facility is available, every hydrodynamic coefficient is
+      obtained by virtual testing in CFD, which makes the verification of that CFD a first-class part of the
+      work rather than an afterthought.
+    </p>
+    <div class="tags"><span class="tag">ANSYS Fluent</span><span class="tag">MATLAB/Simulink</span><span class="tag">Fossen 6-DOF</span><span class="tag">SNAME / NED</span><span class="tag">Under-actuated control</span></div>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <h3 class="card-title">Added-mass identification</h3>
+      <ul>
+        <li>Complete 6-DOF added-mass matrix extracted through forced-oscillation simulations using an overset-mesh setup in ANSYS Fluent.</li>
+        <li>Validated against Lamb's analytical prolate-spheroid theory before adoption into the dynamics model.</li>
+        <li>Cross-checked against DARPA SUBOFF AFF-1 pure-sway planar-motion-mechanism runs.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3 class="card-title">Damping matrix extraction</h3>
+      <ul>
+        <li>Full bare-hull damping matrix — all six diagonal terms plus pitch–heave and yaw–sway cross-terms — extracted from CFD.</li>
+        <li>Rotational damping in roll, pitch and yaw obtained with a rotation-invariant cylindrical overset component and a coupled solver, after diagnosing orphan-cell and divergence failures.</li>
+        <li>Identified and corrected a drag double-counting error between the wing lookup tables and the hull damping block by re-running the whole campaign on the bare hull.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3 class="card-title">Mesh verification</h3>
+      <ul>
+        <li>Formal three-mesh grid convergence study — 1.61 M, 2.94 M and 6.69 M cells — with GCI below 1% on the fine mesh; the medium mesh adopted for production runs.</li>
+        <li>ITTC-compliant domain sizing with blockage held under 0.6%, area-averaged y⁺ ≈ 0.57, k-ω SST closure.</li>
+        <li>Benchmark validation against the published ALEX glider before applying the method to the in-house geometry.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3 class="card-title">Virtual captive-model testing</h3>
+      <ul>
+        <li>Implemented the David Taylor Model Basin captive-test suite virtually in Fluent: resistance, straight-line oblique towing and rotating-arm tests.</li>
+        <li>Showed that pure crossflow tests capture the quadratic damping term but miss the linear body-lift term — a finding that changed the coefficient set used in the simulator.</li>
+        <li>Separated the Munk moment from viscous yaw damping analytically and confirmed the split against two independent test methods.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 class="card-title">Six-degree-of-freedom simulator</h3>
+    <ul>
+      <li>Built a complete Fossen-formulation 6-DOF simulator in MATLAB/Simulink from scratch, in the SNAME/NED body frame, with modular subsystems for buoyancy, restoring forces, damping, Coriolis (rigid-body and added-mass), mass-matrix inversion, wing hydrodynamics, rudder and the Euler-angle Jacobian.</li>
+      <li>Wing module driven by CFD-derived C<sub>L</sub>/C<sub>D</sub> lookup tables across an angle-of-attack sweep; buoyancy engine modelled as a single metallic bellows with cosine S-curve ramping and CAD-derived centre-of-gravity and centre-of-buoyancy coordinates.</li>
+      <li>Diagnosed and corrected a coordinate-datum frame mismatch that was the root cause of persistent simulation failure, along with quadratic-damping sign errors, Jacobian gimbal-lock singularities and algebraic loops.</li>
+      <li>Achieves stable sawtooth glide: pitch settling at ±25°, glide speed ≈ 0.33 m/s, ≈ 65 m depth excursion per leg.</li>
+      <li>Added a ventral rudder — modelled with the Whicker–Fehlner lift slope, finite-aspect-ratio correction and a stall limit — giving the vehicle yaw authority it otherwise lacks. Result: a steady spiral of 7.5 revolutions in 1580 s at roughly 10 m turn radius.</li>
+    </ul>
+  </div>
+
+  <h3 class="sub">Perception for autonomous driving</h3>
+
+  <div class="card">
+    <div class="card-head">
+      <div>
+        <h3 class="card-title">Development of Perception Capabilities for Autonomous Driving</h3>
+        <p class="card-org">Autonomous Systems Lab, IIT Madras</p>
+      </div>
+      <div class="card-meta">2024 — Present</div>
+    </div>
+    <ul>
+      <li>Performed sensor integration and registration, and collected time-synchronised multimodal data.</li>
+      <li>Developed a detect–classify–track pipeline for ADAS applications using camera, LiDAR, IMU and GPS.</li>
+      <li>Achieved 62% classification accuracy with pipeline execution under 0.5 s.</li>
+      <li>Implemented vehicle localisation on OpenStreetMap from GPS and IMU data.</li>
+    </ul>
+    <div class="tags"><span class="tag">LiDAR</span><span class="tag">Sensor fusion</span><span class="tag">ROS</span><span class="tag">Open3D · PCL</span><span class="tag">OpenStreetMap</span></div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div>
+        <h3 class="card-title">Forward Prediction of Possible Trajectories of On-Road Traffic Vehicles</h3>
+        <p class="card-org">Autonomous Systems Lab, IIT Madras</p>
+      </div>
+      <div class="card-meta">2024 — Present</div>
+    </div>
+    <ul>
+      <li>Proposed the MC-EKF³ framework (Monte Carlo–Extended Kalman Filter) for trajectory prediction, evaluated with Ackermann steering models.</li>
+      <li>Experimented across multiple motion models, reaching a minimum average displacement error of 0.101 m.</li>
+      <li>Accepted at the IEEE International Conference on Smart Technologies for Power, Energy and Control, 2025.</li>
+    </ul>
+    <div class="tags"><span class="tag">Extended Kalman Filter</span><span class="tag">Monte Carlo</span><span class="tag">Motion models</span><span class="tag">Trajectory prediction</span></div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div>
+        <h3 class="card-title">Fusion of Geometric and Kinematic Features for LiDAR-Based Vehicle Classification</h3>
+        <p class="card-org">Autonomous Systems Lab, IIT Madras</p>
+      </div>
+      <div class="card-meta">2024 — Present</div>
+    </div>
+    <ul>
+      <li>Trained machine learning models with feature augmentation to improve classification accuracy.</li>
+      <li>Improved accuracy by 5% on ambiguous classes, reaching 89% overall on the nuScenes dataset.</li>
+      <li>Ongoing: extending to deep neural networks for trajectory prediction conditioned on vehicle class.</li>
+    </ul>
+    <div class="tags"><span class="tag">nuScenes</span><span class="tag">Feature engineering</span><span class="tag">Point clouds</span><span class="tag">scikit-learn</span></div>
+  </div>
+
+  <h3 class="sub">In progress</h3>
+  <div class="card">
+    <ul style="margin-top:0">
+      <li>Extending the rotating-arm CFD campaign across multiple turn radii to separate the linear and quadratic yaw-damping terms properly.</li>
+      <li>Applying reinforcement learning (PPO and SAC via Gymnasium and Stable-Baselines3) to glider path control, benchmarked against classical control on the validated plant model.</li>
+      <li>Research Proposal Seminar delivered to the Graduate Test Committee; 60-page proposal report submitted.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================================================ PROJECTS -->
+<section class="panel" id="projects" role="tabpanel">
+  <h2 class="sec">Projects</h2>
+  <p class="sec-note">Course projects, competition entries and independent work.</p>
+
+  <h3 class="sub">Computer vision &amp; deep learning</h3>
+  <div class="grid2">
+    <div class="card">
+      <div class="card-head"><div>
+        <h3 class="card-title">Mosquito Species Detection in Low Light</h3>
+        <p class="card-org">Modern Computer Vision (EE5178), IIT Madras</p>
+      </div></div>
+      <ul>
+        <li>Detection and classification of mosquito species in low-light imagery.</li>
+        <li>Zero-DCE network for low-light enhancement feeding a YOLO detector for species detection and classification.</li>
+        <li>Team ranking 9 of 23; mAP 0.5947.</li>
+      </ul>
+      <div class="tags"><span class="tag">Zero-DCE</span><span class="tag">YOLO</span><span class="tag">PyTorch</span><span class="tag">Object detection</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><div>
+        <h3 class="card-title">Image Restoration Preserving Defects</h3>
+        <p class="card-org">Deep Learning for Imaging (EE5179), IIT Madras</p>
+      </div></div>
+      <ul>
+        <li>Restoration of noisy images while preserving genuine defects rather than smoothing them away.</li>
+        <li>Evaluated multiple deep architectures for the restoration task.</li>
+        <li>Top-3 team ranking; SSIM 0.929, PSNR 29.35 dB.</li>
+      </ul>
+      <div class="tags"><span class="tag">Image restoration</span><span class="tag">SSIM / PSNR</span><span class="tag">PyTorch</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><div>
+        <h3 class="card-title">Binary Adder with Recurrent Networks</h3>
+        <p class="card-org">Deep Learning for Imaging (EE5179), IIT Madras</p>
+      </div></div>
+      <ul>
+        <li>Curated a dataset and implemented LSTM and GRU models that learn to perform binary addition.</li>
+        <li>A study of whether recurrent architectures can acquire an exact algorithmic operation from examples.</li>
+      </ul>
+      <div class="tags"><span class="tag">LSTM</span><span class="tag">GRU</span><span class="tag">Sequence models</span></div>
+    </div>
+  </div>
+
+  <h3 class="sub">Speech &amp; audio</h3>
+  <div class="grid2">
+    <div class="card">
+      <div class="card-head"><div>
+        <h3 class="card-title">Zero-Shot Voice Cloning by Style-Space Search</h3>
+        <p class="card-org">Kokoro-82M TTS</p>
+      </div></div>
+      <ul>
+        <li>Added voice cloning to a frozen Kokoro-82M text-to-speech model with no training at all — by searching the model's 256-dimensional style-tensor space directly, CPU-only and fully offline.</li>
+        <li>Established that the style vector splits functionally: dimensions 0–127 drive decoder timbre while 128–255 drive the prosody predictor, and exploited that split to search each half differently.</li>
+        <li>Optimised for speaker similarity under a word-error-rate intelligibility constraint.</li>
+      </ul>
+      <div class="tags"><span class="tag">PyTorch</span><span class="tag">TTS</span><span class="tag">Black-box optimisation</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><div>
+        <h3 class="card-title">Code-Switched Speech Recognition</h3>
+        <p class="card-org">Mozilla Data Collective — "Lost in Transcription"</p>
+      </div></div>
+      <ul>
+        <li>Competition entry on code-switched ASR across Spanish–English, Spanish–Nahuatl and Indonesian–Javanese.</li>
+        <li>Pipeline spanning code-switch-aware training, language-ID multitask learning, pseudo-labelling, ensembling and containerised inference, targeting word error rate.</li>
+      </ul>
+      <div class="tags"><span class="tag">ASR</span><span class="tag">Low-resource NLP</span><span class="tag">Multilingual</span></div>
+    </div>
+  </div>
+
+  <h3 class="sub">Remote sensing &amp; space</h3>
+  <div class="grid2">
+    <div class="card">
+      <div class="card-head"><div>
+        <h3 class="card-title">PRISM — Polarimetric Radar Ice Subsurface Mapper</h3>
+        <p class="card-org">ISRO Bharatiya Antariksh Hackathon 2026</p>
+      </div></div>
+      <ul>
+        <li>Detection of subsurface lunar water ice from Chandrayaan-2 DFSAR polarimetric radar combined with OHRC optical imagery.</li>
+        <li>Introduced SILI (Subsurface Ice Likelihood Index), a composite metric built on Dempster–Shafer evidential fusion to combine disagreeing radar and optical evidence under uncertainty.</li>
+      </ul>
+      <div class="tags"><span class="tag">SAR polarimetry</span><span class="tag">Dempster–Shafer</span><span class="tag">Chandrayaan-2</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><div>
+        <h3 class="card-title">PIDIB — Physics-Informed Thermal Frame Interpolation</h3>
+        <p class="card-org">ISRO Bharatiya Antariksh Hackathon 2026</p>
+      </div></div>
+      <ul>
+        <li>Physics-informed deep architecture for temporal interpolation of INSAT-3DS/3DR thermal-infrared satellite frames.</li>
+        <li>Constrains the learned interpolation with the physical behaviour of the thermal field rather than treating it as generic video frame interpolation.</li>
+      </ul>
+      <div class="tags"><span class="tag">Physics-informed ML</span><span class="tag">Deep learning</span><span class="tag">INSAT-3DS</span></div>
+    </div>
+  </div>
+
+  <h3 class="sub">Robotics hardware</h3>
+  <div class="card">
+    <div class="card-head"><div>
+      <h3 class="card-title">Open-Source 6-DOF Robotic Arm with Dexterous Hand</h3>
+      <p class="card-org">Independent build</p>
+    </div></div>
+    <ul>
+      <li>Surveyed and benchmarked open-source manipulator platforms (SO-ARM101, Thor, PAROL6, ElRobot) against a strict non-printed component budget.</li>
+      <li>Built on the ElRobot platform — 7+1 DOF with Feetech ST-3215 serial-bus servos — with a five-finger Amazing Hand attachment for grasping research.</li>
+    </ul>
+    <div class="tags"><span class="tag">ROS</span><span class="tag">Servo control</span><span class="tag">Manipulation</span><span class="tag">3D printing</span></div>
+  </div>
+</section>
+
+<!-- ============================================================ PUBLICATIONS -->
+<section class="panel" id="publications" role="tabpanel">
+  <h2 class="sec">Publications &amp; Presentations</h2>
+  <p class="sec-note">Peer-reviewed papers, conference presentations and technical reports.</p>
+
+  <div class="flag">
+    <strong>Send me the exact titles, author lists in order, and DOIs</strong> for the two conference papers
+    and I will format these as proper citations. Everything else on this tab is accurate.
+  </div>
+
+  <h3 class="sub">Conference papers</h3>
+
+  <div class="card">
+    <p style="margin:0;font-size:15.4px;color:var(--ink-2)">
+      <span class="todo">[Author list]</span>. “<span class="todo">[Exact title]</span>.”
+      <em>IEEE SPACE 2026 Conference</em>, Bengaluru, India, 2026.
+      <span class="todo">[DOI]</span>
+    </p>
+    <p class="body" style="margin-bottom:0">
+      Modelling and closed-loop performance analysis of an aircraft hydraulic system for high-speed take-off
+      and landing, including PID-tuned valve actuation and validation against real flight-condition data.
+    </p>
+    <div class="tags"><span class="tag gold">Best Paper Award</span><span class="tag">Hydraulics</span><span class="tag">UAV landing gear</span></div>
+  </div>
+
+  <div class="card">
+    <p style="margin:0;font-size:15.4px;color:var(--ink-2)">
+      <span class="todo">[Author list]</span>. “<span class="todo">[Exact title]</span>.”
+      <em>IEEE International Conference on Smart Technologies for Power, Energy and Control (STPEC)</em>, 2025.
+      <span class="todo">[DOI]</span>
+    </p>
+    <p class="body" style="margin-bottom:0">
+      The MC-EKF³ framework for forward prediction of on-road traffic vehicle trajectories, evaluated with
+      Ackermann steering models across multiple motion models — minimum average displacement error 0.101 m.
+    </p>
+    <div class="tags"><span class="tag">Accepted</span><span class="tag">Trajectory prediction</span><span class="tag">Kalman filtering</span></div>
+  </div>
+
+  <h3 class="sub">Technical reports</h3>
+  <div class="card">
+    <ul style="margin-top:0">
+      <li><strong>Research Proposal Seminar report</strong> — 60 pages, Department of Engineering Design, IIT Madras, 2026. Dynamics and control of a buoyancy-driven winged underwater glider.</li>
+      <li><strong>CFD damping-extraction methodology</strong> — 14-page methodology document covering all six degrees of freedom, the validation strategy and comparison with published literature.</li>
+    </ul>
+  </div>
+
+  <h3 class="sub">Workshops attended</h3>
+  <div class="card">
+    <ul style="margin-top:0">
+      <li><strong>3D Vision</strong> — Centre for Visual Information Technology, IIIT Hyderabad.</li>
+      <li><strong>Bayesian Estimation Methods in Robotics</strong> — delivered by faculty from the University of Stuttgart at IIT Madras.</li>
+    </ul>
+  </div>
+
+  <h3 class="sub">Identifiers</h3>
+  <div class="card">
+    <p style="margin:0">ORCID: <a href="https://orcid.org/0009-0006-1127-6573" target="_blank" rel="noopener">0009-0006-1127-6573</a></p>
+  </div>
+</section>
+
+<!-- ============================================================ GALLERY -->
+<section class="panel" id="gallery" role="tabpanel">
+  <h2 class="sec">Gallery</h2>
+  <p class="sec-note">Simulations, CFD renders, hardware, conferences and field work.</p>
+
+  <div class="flag" id="galFlag">
+    <strong>Add your own photos, videos and animations here.</strong> Drop images into
+    <code>assets/images/</code> and videos into <code>assets/videos/</code>, then add one line per item to the
+    <code>MEDIA</code> list near the bottom of <code>index.html</code>. Send me the files and I will wire them
+    in for you.
+  </div>
+
+  <div class="gal-filters" id="galFilters"></div>
+  <div class="gal" id="galGrid"></div>
+</section>
+
+<!-- ============================================================ SKILLS -->
+<section class="panel" id="skills" role="tabpanel">
+  <h2 class="sec">Skills</h2>
+  <p class="sec-note">Tools and methods I use day to day.</p>
+
+  <h3 class="sub">Programming</h3>
+  <div class="skillrow"><div class="k">Languages</div><div class="v">
+    <span class="tag">C++</span><span class="tag">Python</span><span class="tag">C</span><span class="tag">Assembly</span><span class="tag">MATLAB</span><span class="tag">LaTeX</span>
+  </div></div>
+  <div class="skillrow"><div class="k">Libraries</div><div class="v">
+    <span class="tag">Open3D</span><span class="tag">PCL</span><span class="tag">Eigen</span><span class="tag">NumPy</span><span class="tag">Pandas</span><span class="tag">SciPy</span><span class="tag">scikit-learn</span><span class="tag">OpenCV</span><span class="tag">Matplotlib</span>
+  </div></div>
+  <div class="skillrow"><div class="k">Frameworks</div><div class="v">
+    <span class="tag">PyTorch</span><span class="tag">ROS</span><span class="tag">Simulink</span><span class="tag">Gymnasium</span><span class="tag">Stable-Baselines3</span>
+  </div></div>
+  <div class="skillrow"><div class="k">Tooling</div><div class="v">
+    <span class="tag">Git</span><span class="tag">Gerrit</span><span class="tag">Jenkins</span><span class="tag">Ubuntu / Linux</span>
+  </div></div>
+
+  <h3 class="sub">Simulation &amp; analysis</h3>
+  <div class="skillrow"><div class="k">CFD</div><div class="v">
+    <span class="tag">ANSYS Fluent</span><span class="tag">ANSYS Workbench</span><span class="tag">Overset meshing</span><span class="tag">Dynamic mesh &amp; UDFs</span><span class="tag">k-ω SST</span><span class="tag">Grid convergence / GCI</span>
+  </div></div>
+  <div class="skillrow"><div class="k">Dynamics &amp; control</div><div class="v">
+    <span class="tag">Fossen 6-DOF</span><span class="tag">System identification</span><span class="tag">PID tuning</span><span class="tag">Vehicle dynamics</span><span class="tag">MSC Adams</span>
+  </div></div>
+  <div class="skillrow"><div class="k">Multiphysics &amp; systems</div><div class="v">
+    <span class="tag">Simcenter Amesim</span><span class="tag">Hydraulic circuit design</span><span class="tag">Reliability analysis</span>
+  </div></div>
+
+  <h3 class="sub">Robotics &amp; perception</h3>
+  <div class="skillrow"><div class="k">Sensing</div><div class="v">
+    <span class="tag">LiDAR</span><span class="tag">Camera</span><span class="tag">IMU · GPS</span><span class="tag">USBL · DVL · INS</span><span class="tag">Sensor fusion &amp; registration</span>
+  </div></div>
+  <div class="skillrow"><div class="k">Methods</div><div class="v">
+    <span class="tag">Detect–classify–track</span><span class="tag">Extended Kalman filtering</span><span class="tag">Trajectory prediction</span><span class="tag">Point-cloud processing</span><span class="tag">Reinforcement learning</span>
+  </div></div>
+  <div class="skillrow"><div class="k">CAD &amp; hardware</div><div class="v">
+    <span class="tag">SolidWorks</span><span class="tag">AutoCAD</span><span class="tag">ANSYS DesignModeler</span><span class="tag">Servo &amp; actuator control</span>
+  </div></div>
+
+  <h3 class="sub">Coursework</h3>
+  <div class="skillrow"><div class="k">IIT Madras</div><div class="v">
+    <span class="tag">Introduction to Machine Learning (EE5180)</span><span class="tag">Deep Learning for Imaging (EE5179)</span><span class="tag">Modern Computer Vision (EE5178)</span><span class="tag">Vehicle Dynamics (ED5220)</span><span class="tag">Introduction to Field and Service Robotics (ED5315)</span>
+  </div></div>
+
+  <h3 class="sub">Languages</h3>
+  <div class="skillrow"><div class="k">Spoken</div><div class="v">
+    <span class="tag">English — professional</span><span class="tag">Hindi — native</span>
+  </div></div>
+</section>
+
+<!-- ============================================================ EDUCATION -->
+<section class="panel" id="education" role="tabpanel">
+  <h2 class="sec">Education</h2>
+  <p class="sec-note">Degrees, achievements and professional development.</p>
+
+  <div class="tl">
+    <div class="tl-item">
+      <div class="card-meta" style="text-align:left;margin-bottom:5px">2025 — 2027 (expected)</div>
+      <h3 class="card-title">Master of Science (by Research) — Robotics and Automation</h3>
+      <p class="card-org">Indian Institute of Technology Madras, Chennai</p>
+      <ul style="padding-left:20px;margin-top:12px;color:var(--ink-2);font-size:15.3px">
+        <li>Department of Engineering Design. Advisor: Dr. Asokan Thondiyath, Autonomous Systems Lab.</li>
+        <li>Thesis: dynamics, hydrodynamic modelling and control of a 123 kg buoyancy-driven winged underwater glider.</li>
+        <li><strong>CGPA 8.19 / 10</strong></li>
+      </ul>
+    </div>
+
+    <div class="tl-item">
+      <div class="card-meta" style="text-align:left;margin-bottom:5px">2018 — 2022</div>
+      <h3 class="card-title">Bachelor of Technology — Mechanical Engineering</h3>
+      <p class="card-org">Vinoba Bhave University, Hazaribagh, Jharkhand</p>
+      <ul style="padding-left:20px;margin-top:12px;color:var(--ink-2);font-size:15.3px">
+        <li>Core coursework in thermodynamics, fluid mechanics, machine design, manufacturing and control systems.</li>
+        <li><strong>78.70%</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="sub">Achievements</h3>
+  <div class="card">
+    <ul style="margin-top:0">
+      <li><strong>Best Paper Award</strong> — IEEE SPACE 2026 Conference, Bengaluru.</li>
+      <li><strong>Two high customer satisfaction certificates</strong> awarded by a leading Japanese automotive client for ADAS feature delivery.</li>
+      <li>Qualified in the Graduate Aptitude Test in Engineering (GATE).</li>
+    </ul>
+  </div>
+
+  <h3 class="sub">Workshops</h3>
+  <div class="card">
+    <ul style="margin-top:0">
+      <li><strong>3D Vision</strong> — Centre for Visual Information Technology, IIIT Hyderabad.</li>
+      <li><strong>Bayesian Estimation Methods in Robotics</strong> — University of Stuttgart faculty, hosted at IIT Madras.</li>
+    </ul>
+  </div>
+
+  <h3 class="sub">Teaching</h3>
+  <div class="card">
+    <ul style="margin-top:0">
+      <li>Teaching Assistant — Analog and Digital Electronics Laboratory, IIT Madras (July–November 2025).</li>
+      <li>Teaching Assistant — Functional and Conceptual Design (ED1011), IIT Madras.</li>
+      <li>Teaching Assistant — NPTEL online course, <span class="todo">[course name and term]</span>.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================================================ CONTACT -->
+<section class="panel" id="contact" role="tabpanel">
+  <h2 class="sec">Contact</h2>
+  <p class="sec-note">Open to research collaborations, roles and conversations about robotics.</p>
+
+  <p class="lead" style="max-width:660px">
+    The fastest way to reach me is email — I read both addresses below. I am based in Chennai and expect to
+    complete my MS at IIT Madras in 2027.
+  </p>
+
+  <div class="contact-grid">
+    <div class="cbox">
+      <div class="k">Email — Personal</div>
+      <div class="v"><a href="mailto:surajkumarmech2022@gmail.com">surajkumarmech2022@gmail.com</a></div>
+    </div>
+    <div class="cbox">
+      <div class="k">Email — Institute</div>
+      <div class="v"><a href="mailto:ed24s029@smail.iitm.ac.in">ed24s029@smail.iitm.ac.in</a></div>
+    </div>
+    <div class="cbox">
+      <div class="k">Phone</div>
+      <div class="v"><a href="tel:+919507459735">+91 95074 59735</a></div>
+    </div>
+    <div class="cbox">
+      <div class="k">LinkedIn</div>
+      <div class="v"><a href="https://www.linkedin.com/in/suraj-kumar-42050a198/" target="_blank" rel="noopener">suraj-kumar-42050a198</a></div>
+    </div>
+    <div class="cbox">
+      <div class="k">GitHub</div>
+      <div class="v"><a href="https://github.com/surajkumar-iitm" target="_blank" rel="noopener">github.com/surajkumar-iitm</a></div>
+    </div>
+    <div class="cbox">
+      <div class="k">ORCID</div>
+      <div class="v"><a href="https://orcid.org/0009-0006-1127-6573" target="_blank" rel="noopener">0009-0006-1127-6573</a></div>
+    </div>
+    <div class="cbox">
+      <div class="k">Location</div>
+      <div class="v">Department of Engineering Design<br>IIT Madras, Chennai 600036, India</div>
+    </div>
+    <div class="cbox">
+      <div class="k">Curriculum Vitae</div>
+      <div class="v"><a href="assets/docs/CV.pdf" download>Download PDF</a></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap foot-inner">
+    <div>© <span id="yr"></span> Suraj Kumar · Department of Engineering Design, IIT Madras</div>
+    <div>Static site — no trackers, no cookies.</div>
+  </div>
+</footer>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true">
+  <button class="lb-x" id="lbX" aria-label="Close">&times;</button>
+  <div class="lb-body" id="lbBody"></div>
+</div>
+
+<script>
+/* ============================================================
+   1. YOUR MEDIA — ADD PHOTOS, VIDEOS AND ANIMATIONS HERE
+   ------------------------------------------------------------
+   Copy a line, change the values. That is the whole job.
+
+     type   : "image" or "video"
+     src    : path to the file inside your repo
+     group  : becomes a filter button automatically
+     title  : short caption heading
+     desc   : one line of context
+     poster : (videos only, optional) still image shown before play
+
+   Supported: .jpg .png .webp .gif  |  .mp4 .webm
+   Animated GIFs count as "image". Keep videos under ~25 MB.
+   ============================================================ */
+const MEDIA = [
+  { type:"image", src:"assets/images/ieee-space-2026.jpg", group:"Conferences",
+    title:"IEEE SPACE 2026, Bengaluru",
+    desc:"Presenting the aircraft hydraulic system paper — awarded Best Paper." },
+
+  // ---- Uncomment and edit as you add files ----
+  // { type:"image", src:"assets/images/glider-cad.jpg",   group:"Glider",     title:"Glider hull assembly",       desc:"2.4 m hull, 0.6 m maximum diameter — CAD model." },
+  // { type:"image", src:"assets/images/cfd-pressure.png", group:"CFD",        title:"Surface pressure contours",  desc:"Bare-hull surge run at 1.0 m/s, medium mesh." },
+  // { type:"image", src:"assets/images/streamlines.gif",  group:"CFD",        title:"Wake development",           desc:"Animated streamlines over the oblique-tow sweep." },
+  // { type:"video", src:"assets/videos/spiral-glide.mp4", group:"Simulation", title:"Controlled spiral descent",  desc:"7.5 revolutions in 1580 s, ~10 m turn radius.", poster:"assets/images/spiral-poster.jpg" },
+  // { type:"video", src:"assets/videos/auv-basin.mp4",    group:"Hardware",   title:"ROV shallow-basin test",     desc:"CSIR-CMERI test facility, Durgapur." },
+  // { type:"image", src:"assets/images/lidar-track.png",  group:"Perception", title:"Detect–classify–track",      desc:"LiDAR + camera pipeline output on campus data." },
+];
+
+/* ============================================================
+   2. SITE MACHINERY — no need to edit below here
+   ============================================================ */
+(function(){
+  "use strict";
+
+  const tabs   = Array.from(document.querySelectorAll(".tab"));
+  const panels = Array.from(document.querySelectorAll(".panel"));
+
+  function show(id, push){
+    tabs.forEach(t => t.setAttribute("aria-selected", String(t.dataset.tab === id)));
+    panels.forEach(p => p.classList.toggle("active", p.id === id));
+    if (push) history.replaceState(null, "", "#" + id);
+    window.scrollTo(0, 0);
+  }
+  tabs.forEach(t => t.addEventListener("click", () => show(t.dataset.tab, true)));
+
+  const start = location.hash.replace("#", "");
+  if (start && document.getElementById(start)) show(start, false);
+
+  document.getElementById("yr").textContent = new Date().getFullYear();
+
+  /* ---- Gallery ---- */
+  const grid    = document.getElementById("galGrid");
+  const filters = document.getElementById("galFilters");
+  const flag    = document.getElementById("galFlag");
+
+  const PLACEHOLDERS = [
+    { group:"Glider",     title:"Glider CAD / hardware", desc:"Drop a render or photo of the vehicle here." },
+    { group:"CFD",        title:"CFD contours",          desc:"Pressure, velocity or y+ plots from Fluent." },
+    { group:"Simulation", title:"Trajectory animation",  desc:"An .mp4 of a sawtooth glide or spiral run." },
+    { group:"Perception", title:"ADAS pipeline output",  desc:"LiDAR tracks, classification, free-space maps." },
+    { group:"Hardware",   title:"Lab &amp; field photos", desc:"AUV/ROV basin tests, robotic arm build." }
+  ];
+
+  const hasMedia = MEDIA.length > 0;
+  if (hasMedia && flag) flag.style.display = "none";
+
+  // Real media first, then any placeholder groups not yet filled.
+  const filled = new Set(MEDIA.map(m => m.group));
+  const items  = MEDIA.concat(PLACEHOLDERS.filter(p => !filled.has(p.group)));
+
+  const groups = ["All", ...Array.from(new Set(items.map(i => i.group)))];
+  let active = "All";
+
+  function renderFilters(){
+    filters.innerHTML = "";
+    groups.forEach(g => {
+      const b = document.createElement("button");
+      b.className = "gf" + (g === active ? " on" : "");
+      b.textContent = g;
+      b.addEventListener("click", () => { active = g; renderFilters(); renderGrid(); });
+      filters.appendChild(b);
+    });
+  }
+
+  function renderGrid(){
+    grid.innerHTML = "";
+    items
+      .filter(i => active === "All" || i.group === active)
+      .forEach(it => {
+        const isReal = !!it.src;
+        const card = document.createElement("div");
+        card.className = "gitem";
+
+        let thumb;
+        if (!isReal){
+          thumb = '<div class="gthumb"><div class="gempty">' + it.group + '</div></div>';
+        } else if (it.type === "video"){
+          thumb = '<div class="gthumb"><span class="gbadge">Video</span>' +
+                  '<video src="' + it.src + '"' + (it.poster ? ' poster="' + it.poster + '"' : '') +
+                  ' muted playsinline preload="metadata"></video></div>';
+        } else {
+          thumb = '<div class="gthumb"><img src="' + it.src + '" alt="' + it.title + '" loading="lazy"></div>';
+        }
+
+        card.innerHTML = thumb +
+          '<div class="gcap"><p class="t">' + it.title + '</p><p class="d">' + it.desc + '</p></div>';
+
+        if (isReal) card.addEventListener("click", () => openLb(it));
+        grid.appendChild(card);
+      });
+  }
+
+  /* ---- Lightbox ---- */
+  const lb     = document.getElementById("lb");
+  const lbBody = document.getElementById("lbBody");
+
+  function openLb(it){
+    lbBody.innerHTML =
+      (it.type === "video"
+        ? '<video src="' + it.src + '" controls autoplay playsinline></video>'
+        : '<img src="' + it.src + '" alt="' + it.title + '">') +
+      '<div class="lb-cap"><div class="t">' + it.title + '</div>' + it.desc + '</div>';
+    lb.classList.add("on");
+  }
+  function closeLb(){ lb.classList.remove("on"); lbBody.innerHTML = ""; }
+
+  document.getElementById("lbX").addEventListener("click", closeLb);
+  lb.addEventListener("click", e => { if (e.target === lb) closeLb(); });
+  document.addEventListener("keydown", e => { if (e.key === "Escape") closeLb(); });
+
+  renderFilters();
+  renderGrid();
+})();
+</script>
+</body>
+</html>
